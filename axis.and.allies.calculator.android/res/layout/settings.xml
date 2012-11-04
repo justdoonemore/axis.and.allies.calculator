@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/table_with_embedded_ad"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*" >
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/select_version_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Version:" >
+            </TextView>
+        </TableRow>
+
+        <TableRow>
+
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                android:paddingTop="15dp" >
+
+                <RadioButton
+                    android:id="@+id/version_1942"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:onClick="set1942Edition"
+                    android:text="Axis &amp; Allies: 1942" />
+
+                <RadioButton
+                    android:id="@+id/version_revised"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:onClick="setRevisedEdition"
+                    android:text="Axis &amp; Allies: Revised" />
+
+                <RadioButton
+                    android:id="@+id/version_revised"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="Axis &amp; Allies: Anniversary (coming soon)" />
+            </RadioGroup>
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/buttons_table"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:stretchColumns="*" >
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/select_version_label"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Legal Information:" >
+                </TextView>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/version_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:singleLine="false"
+                    android:text="© Axis &amp; Allies is trademark owned by Hasbro Inc, All rights reserved."
+                    android:textSize="16dp" />
+            </TableRow>
+
+            <TableRow android:paddingTop="12dp" >
+
+                <Button
+                    android:id="@+id/settings_ok_button"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:onClick="ok"
+                    android:text="@string/settings_ok_buttonText" />
+
+                <Button
+                    android:id="@+id/settings_cancel_button"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:onClick="cancel"
+                    android:text="@string/cancel_purchase_buttonText" />
+            </TableRow>
+        </TableLayout>
+    </FrameLayout>
+
+</RelativeLayout>

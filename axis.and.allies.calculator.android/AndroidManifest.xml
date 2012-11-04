@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="auto"
+    package="com.jdom.axis.and.allies.view"
+    android:versionCode="8"
+    android:versionName="1.1.6" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:name="com.jdom.axis.and.allies.view.AxisAndAlliesApplication" android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:name="com.jdom.axis.and.allies.view.AxisAndAlliesActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.jdom.axis.and.allies.view.PurchaseActivity"
+            android:label="@string/purchase_activity_name"
+            android:screenOrientation="portrait" >
+        </activity>
+         <activity
+            android:name="com.jdom.axis.and.allies.view.DetailsViewActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.jdom.acom.jdom.axis.and.allies.view.SettingsActivity"  android:label="@string/settings_activity_name"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>

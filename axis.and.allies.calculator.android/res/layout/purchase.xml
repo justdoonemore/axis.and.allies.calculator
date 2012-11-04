@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/adView"
+        android:paddingBottom="20dp" >
+
+        <LinearLayout
+            android:id="@+id/scroll_view_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:stretchColumns="*" >
+
+            <TableLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/purchasables_table"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:stretchColumns="*" >
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/playerOneName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Infantry" >
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/undo_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/undo_buttonText" />
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:id="@+id/buttons_table"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:stretchColumns="*" >
+
+                <Button
+                    android:id="@+id/make_purchase_button"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:onClick="confirmPurchase"
+                    android:text="@string/make_purchase_buttonText" />
+
+                <Button
+                    android:id="@+id/cancel_purchase_button"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:onClick="cancelPurchase"
+                    android:text="@string/cancel_purchase_buttonText" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

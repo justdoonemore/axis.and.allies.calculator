@@ -1,0 +1,4 @@
+If you are planning on deploying releases/snapshots to a maven repository, please set the following properties in your maven settings.xml:
+
+releases.url
+snapshots.url

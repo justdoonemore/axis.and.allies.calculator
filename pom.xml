@@ -1,0 +1,178 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.jdom</groupId>
+	<artifactId>axis.and.allies.calculator</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>axis.and.allies.calculator.model</module>
+		<module>axis.and.allies.calculator.android</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.plugin>2.3.2</maven.compiler.plugin>
+		<commons.lang3.version>3.0</commons.lang3.version>
+		<commons.io.version>2.1</commons.io.version>
+		<junit.version>4.8.2</junit.version>
+		<jmock.version>2.5.1</jmock.version>
+		<jdk.compliance>1.5</jdk.compliance>
+		<robolectric.version>1.0</robolectric.version>
+		<maven-jarsigner-plugin.version>1.2</maven-jarsigner-plugin.version>
+		<android-maven-plugin.version>3.0.0</android-maven-plugin.version>
+	</properties>
+
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Internal Releases</name>
+			<url>${releases.url}</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Internal Snapshots</name>
+			<url>${snapshots.url}</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin}</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>${jdk.compliance}</source>
+					<target>${jdk.compliance}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<activation>
+				<property>
+					<name>release</name>
+				</property>
+			</activation>
+			<properties>
+				<android.sign.with.debug.key>false</android.sign.with.debug.key>
+				<proguard.skip>false</proguard.skip>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jarsigner-plugin</artifactId>
+						<version>${maven-jarsigner-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>signing</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+								<phase>package</phase>
+								<inherited>true</inherited>
+								<configuration>
+									<archiveDirectory></archiveDirectory>
+									<includes>
+										<include>target/*.apk</include>
+									</includes>
+
+									<keystore>${keystore}</keystore>
+									<storepass>${keystore.password}</storepass>
+									<keypass>${key.password}</keypass>
+									<alias>${key.alias}</alias>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+						<artifactId>android-maven-plugin</artifactId>
+						<inherited>true</inherited>
+						<version>${android-maven-plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<sign>
+								<debug>${android.sign.with.debug.key}</debug>
+							</sign>
+							<sdk>
+								<!-- platform or api level (api level 4 = platform 1.6) -->
+								<platform>${sdk.version}</platform>
+							</sdk>
+							<proguard>
+								<skip>${proguard.skip}</skip>
+							</proguard>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<android.sign.with.debug.key>true</android.sign.with.debug.key>
+				<proguard.skip>true</proguard.skip>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+						<artifactId>android-maven-plugin</artifactId>
+						<inherited>true</inherited>
+						<version>${android-maven-plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<sign>
+								<debug>${android.sign.with.debug.key}</debug>
+							</sign>
+							<sdk>
+								<!-- platform or api level (api level 4 = platform 1.6) -->
+								<platform>${sdk.version}</platform>
+							</sdk>
+							<proguard>
+								<skip>${proguard.skip}</skip>
+							</proguard>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+</project>

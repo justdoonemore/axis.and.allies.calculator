@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/new_game"
+        android:icon="@drawable/ic_menu_add"
+        android:title="@string/new_game"/>
+
+    <item
+        android:id="@+id/save_game"
+        android:icon="@drawable/ic_menu_save"
+        android:title="@string/save_game"/>
+
+    <item
+        android:id="@+id/load_game"
+        android:icon="@drawable/ic_menu_archive"
+        android:title="@string/load_game"/>
+
+    <item
+        android:id="@+id/delete_game"
+        android:icon="@drawable/ic_menu_delete"
+        android:title="@string/delete_game"/>
+    
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_menu_preferences"
+        android:title="@string/settings"/>
+    
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/ic_menu_emoticons"
+        android:title="@string/more"/>
+
+</menu>

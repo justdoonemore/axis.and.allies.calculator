@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/countries_table"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*" >
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/playerTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="left"
+                android:text="Country"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ipcTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="center"
+                android:text="IPCs"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/playerOneName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="left"
+                android:text="Soviet Union"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/playerOneIpcs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="22dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/playerTwoName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="left"
+                android:text="Germany"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/playerTwoIpcs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="22dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/playerThreeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="left"
+                android:text="United Kingdom"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/playerThreeIpcs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="22dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/playerFourName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="left"
+                android:text="Japan"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/playerFourIpcs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="22dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/playerFiveName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="left"
+                android:text="United States"
+                android:textSize="22dp" />
+
+            <TextView
+                android:id="@+id/playerFiveIpcs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="6"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="22dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/details_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="details"
+                android:text="@string/details"
+                android:textSize="15dp" />
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/buttons_table"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:stretchColumns="*" >
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/version_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Version: "
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/version"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Axis &amp; Allies: 1942"
+                    android:textSize="16dp"
+                    android:textStyle="italic" />
+            </TableRow>
+
+            <TableRow android:paddingTop="12dp" >
+
+                <Button
+                    android:id="@+id/purchase_units_button"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_menu_agenda"
+                    android:text="@string/purchase_buttonText" />
+
+                <Button
+                    android:id="@+id/seize_territory_button"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_dialog_map"
+                    android:text="@string/seizeTerritories_buttonText" />
+
+                <Button
+                    android:id="@+id/turn_over_button"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_menu_forward"
+                    android:onClick="turnOver"
+                    android:text="@string/turnOver_buttonText" />
+
+                <Button
+                    android:id="@+id/undo_button"
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_menu_revert"
+                    android:onClick="undo"
+                    android:text="@string/undo_buttonText" />
+            </TableRow>
+        </TableLayout>
+    </FrameLayout>
+
+</RelativeLayout>
