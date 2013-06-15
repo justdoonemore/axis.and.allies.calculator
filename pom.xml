@@ -4,7 +4,7 @@
 
 	<groupId>com.jdom</groupId>
 	<artifactId>axis.and.allies.calculator</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -17,12 +17,14 @@
 		<maven.compiler.plugin>2.3.2</maven.compiler.plugin>
 		<commons.lang3.version>3.0</commons.lang3.version>
 		<commons.io.version>2.1</commons.io.version>
+		<util.log.api.version>0.0.4</util.log.api.version>
+		<util.log.android.version>0.0.1</util.log.android.version>
 		<junit.version>4.8.2</junit.version>
 		<jmock.version>2.5.1</jmock.version>
 		<jdk.compliance>1.5</jdk.compliance>
 		<robolectric.version>1.0</robolectric.version>
 		<maven-jarsigner-plugin.version>1.2</maven-jarsigner-plugin.version>
-		<android-maven-plugin.version>3.0.0</android-maven-plugin.version>
+		<android-maven-plugin.version>3.6.0</android-maven-plugin.version>
 	</properties>
 
 
@@ -101,6 +103,12 @@
 						<version>${android-maven-plugin.version}</version>
 						<extensions>true</extensions>
 						<configuration>
+							<!-- Include Java ServiceLoader files -->
+							<apk>
+								<metaIncludes>
+									<metaInclude>services/**</metaInclude>
+								</metaIncludes>
+							</apk>
 							<sign>
 								<debug>${android.sign.with.debug.key}</debug>
 							</sign>
@@ -135,6 +143,12 @@
 						<version>${android-maven-plugin.version}</version>
 						<extensions>true</extensions>
 						<configuration>
+							<!-- Include Java ServiceLoader files -->
+							<apk>
+								<metaIncludes>
+									<metaInclude>services/**</metaInclude>
+								</metaIncludes>
+							</apk>
 							<sign>
 								<debug>${android.sign.with.debug.key}</debug>
 							</sign>
@@ -153,26 +167,49 @@
 
 	</profiles>
 
-	<dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons.io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons.lang3.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jdom</groupId>
+				<artifactId>util.log.api</artifactId>
+				<version>${util.log.api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jdom</groupId>
+				<artifactId>util.log.android</artifactId>
+				<version>${util.log.android.version}</version>
+			</dependency>
 
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>${commons.io.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons.lang3.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-	</dependencies>
+			<!-- Test Dependencies -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jmock</groupId>
+				<artifactId>jmock-junit4</artifactId>
+				<version>${jmock.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jmock</groupId>
+				<artifactId>jmock-legacy</artifactId>
+				<version>${jmock.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>

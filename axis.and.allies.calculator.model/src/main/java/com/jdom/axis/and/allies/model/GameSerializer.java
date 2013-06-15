@@ -35,6 +35,8 @@ import org.apache.commons.lang3.StringUtils;
 import com.jdom.axis.and.allies.model.PlayableCountry.PlayableCountryImpl;
 import com.jdom.axis.and.allies.model.Purchasable.PurchasableImpl;
 import com.jdom.axis.and.allies.model.Territory.TerritoryImpl;
+import com.jdom.logging.api.LogFactory;
+import com.jdom.logging.api.Logger;
 
 public class GameSerializer {
 	private static final String PLAYABLE_COUNTRY_NAMES = "playableCountryNames";
@@ -61,12 +63,16 @@ public class GameSerializer {
 		DEFAULT_CAPITAL_MAP.put("Japan", "Japan,Philippine Islands,Kwangtung");
 	}
 
+	private final Logger log = LogFactory.getLogger(GameSerializer.class);
+
 	public String serialize(Game game) {
 		Properties properties = new Properties();
 		// Required for backwards compatibility
 		if (game.version == null) {
 			game.version = DEFAULT_VERSION;
 		}
+
+		log.info("Serializing game with version: " + game.version);
 		properties.setProperty(VERSION, game.version);
 
 		Set<String> territoryNames = game.territoryMap.keySet();
@@ -155,6 +161,7 @@ public class GameSerializer {
 		if (game.version == null) {
 			game.version = DEFAULT_VERSION;
 		}
+		log.info("Deserializing game with version: " + game.version);
 		String[] territoryNames = StringUtils.split(
 				properties.getProperty(TERRITORY_NAMES), SEPARATOR);
 

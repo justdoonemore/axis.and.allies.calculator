@@ -25,13 +25,21 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-
 import com.jdom.axis.and.allies.model.Game;
 import com.jdom.axis.and.allies.model.GameModel;
 import com.jdom.axis.and.allies.model.GameModelImpl;
 import com.jdom.axis.and.allies.model.GameSerializer;
+import com.jdom.logging.android.AndroidLoggerFactory;
+import com.jdom.logging.api.LogFactory;
+import com.jdom.logging.api.Logger;
 
 public final class AxisAndAlliesApplication extends Application {
+	private static final Logger log;
+	static {
+		LogFactory.setFactory(AndroidLoggerFactory.class);
+		log = LogFactory.getLogger(AxisAndAlliesApplication.class);
+	}
+
 	private final String SAVED_STATE_KEY = "state";
 
 	private final GameSerializer gameSerializer = new GameSerializer();

@@ -4,22 +4,33 @@
 	<parent>
 		<artifactId>axis.and.allies.calculator</artifactId>
 		<groupId>com.jdom</groupId>
-		<version>0.0.1</version>
+		<version>0.0.2</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>axis.and.allies.calculator.model</artifactId>
 
 	<dependencies>
 		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.jdom</groupId>
+			<artifactId>util.log.api</artifactId>
+		</dependency>
+		<!-- Test Dependencies -->
+		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock-junit4</artifactId>
-			<version>${jmock.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>
 			<artifactId>jmock-legacy</artifactId>
-			<version>${jmock.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

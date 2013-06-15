@@ -1,0 +1,108 @@
+buildscript {
+    repositories {
+       maven {
+           credentials {
+              username nexusUsername
+              password nexusPassword
+           }
+           url nexusUrl
+       }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.4.2'
+    }
+}
+
+subprojects {
+
+   apply plugin: 'maven'
+   apply plugin: 'eclipse'
+
+   version "0.0.9"
+   group="com.jdom"
+
+   repositories {
+       maven {
+           credentials {
+              username nexusUsername
+              password nexusPassword
+           }
+           url nexusUrl
+       }
+   }
+
+   uploadArchives {
+       repositories {
+           mavenDeployer {
+	           repository(url: releasesUrl) {
+	                authentication(userName: nexusUsername, password: nexusPassword)
+	           }
+           }
+       }
+   }
+}
+
+project(':axis.and.allies.calculator.model') {
+    apply plugin: 'java'
+
+    dependencies {
+        compile "commons-io:commons-io:2.1"
+        compile "org.apache.commons:commons-lang3:3.1"
+        compile "com.jdom:util.log.api:0.0.4"
+ 
+        testCompile "junit:junit:4.8.2"
+        testCompile "org.jmock:jmock-junit4:2.5.1"
+        testCompile "org.jmock:jmock-legacy:2.5.1"
+   }
+}
+
+project(':axis.and.allies.calculator.android') {
+    apply plugin: 'android'
+
+    android {
+        buildToolsVersion "17.0"
+        compileSdkVersion 17
+
+        sourceSets {
+            main {
+                manifest.srcFile 'AndroidManifest.xml'
+                java.srcDirs = ['src']
+
+                resources.srcDirs = ['src']
+                aild.srcDirs = ['src']
+
+                renderscript.srcDirs = ['src']
+
+                res.srcDirs = ['res']
+                assets.srcDirs = ['assets']
+
+            }
+
+
+            instrumentTest.setRoot('tests')
+        }
+
+        signingConfigs {
+            release {
+                storeFile file(androidKeystoreFile)
+                storePassword androidKeystorePassword
+                keyAlias androidKeyAlias
+                keyPassword androidKeyPassword
+            }
+        }
+
+        buildTypes {
+            release {
+                runProguard true
+                proguardFile "proguard.cfg"
+                signingConfig = signingConfigs.release
+            }
+        }
+    }
+
+    dependencies {
+          compile project(':axis.and.allies.calculator.model')
+          compile "com.jdom:util.log.android:0.0.4"
+   }
+}

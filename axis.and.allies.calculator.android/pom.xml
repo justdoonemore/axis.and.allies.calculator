@@ -2,18 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<artifactId>axis.and.allies.calculator</artifactId>
 		<groupId>com.jdom</groupId>
-		<version>0.0.1</version>
+		<version>0.0.2</version>
 		<relativePath>..</relativePath>
 	</parent>
-	
+
 	<name>axis.and.allies.calculator.android</name>
 	<artifactId>axis.and.allies.calculator.android</artifactId>
 	<packaging>apk</packaging>
-	
 
 	<properties>
 		<android.version>2.2.1</android.version>
@@ -45,7 +44,7 @@
 											android-maven-plugin
 										</artifactId>
 										<versionRange>
-											[3.0.0,)
+											[3.6.0,)
 										</versionRange>
 										<goals>
 											<goal>proguard</goal>
@@ -70,20 +69,14 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-		</dependency>
-		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
 			<version>${android.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.jdom</groupId>
+			<artifactId>util.log.android</artifactId>
 		</dependency>
 
 		<!-- Test Dependencies -->
